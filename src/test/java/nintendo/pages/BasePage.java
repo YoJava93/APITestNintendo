@@ -10,7 +10,7 @@ here is just an example of page classes for UI testing
 
 public class BasePage {
     public BasePage() {
-     //   PageFactory.initElements(Driver.get(), this); => i use Page Factory to initialze
+     //   PageFactory.initElements(Driver.get(), this); => i use Page Factory to initialize @FindBy annotations
     }
 
     @FindBy(id = "month")

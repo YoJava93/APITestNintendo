@@ -1,19 +1,18 @@
 package nintendo.step_definition;
-
 import io.cucumber.java.en.*;
 import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import nintendo.pojo.SKUs;
+import nintendo.utilities.ConfigurationReader;
 import org.junit.Assert;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import static io.restassured.RestAssured.*;
 
 public class APIVerification {
 
+    String apiUrl = ConfigurationReader.getProperty("apiUrl");
     Response response;
     SKUs skus = new SKUs();
 
@@ -32,19 +31,16 @@ public class APIVerification {
          response = given().accept(ContentType.JSON)
                 .and().body(skus)
          .when()
-                .post("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus")
+                .post(apiUrl+"/dev/skus")
          .then()
                  .extract().response();
     }
-
 
     @Then("Status code should be {int}")
     public void status_code_should_be(int statusCode) {
         //checking if response is as expected
         Assert.assertEquals("status code in not as expected ",statusCode, response.statusCode());
     }
-
-
 
     @When("I sent a GET request with id {string} and i check response against JSon Schema Validation to verify if response body if it matches with requirements")
     public void i_sent_a_get_request_with_id(String inputId) {
@@ -53,7 +49,7 @@ public class APIVerification {
                 .and()
                 .pathParam("id", inputId)
          .when()
-                .get("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus/{id}")
+                .get(apiUrl+"/dev/skus{id}")
          .then()
                 .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("features/SKUSchema.json"))
          .extract().response();
@@ -66,7 +62,7 @@ public class APIVerification {
                 .and()
                 .pathParam("id", inputId)
          .when()
-                .delete("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus/{id}")
+                .delete(apiUrl+"/dev/skus{id}")
          .then().extract().response();
 
     }
@@ -78,20 +74,19 @@ public class APIVerification {
                 .and()
                 .pathParam("id", inputId)
         .when()
-                .get("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus/{id}")
+                .get(apiUrl+"/dev/skus{id}")
                 .then()
         .extract().response();
     }
-
 
     @When("I send GET request")
     public void i_send_GET_request() {
         response = given().accept(ContentType.JSON)
                 .and()
         .when()
-                .get("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus")
-                .then()
-        .extract().response();
+                .get(apiUrl+"/dev/skus")
+        .then()
+                .extract().response();
     }
 
     @When("I send POST request with invalid body")
@@ -103,9 +98,9 @@ public class APIVerification {
 
         response = given().accept(ContentType.JSON)
                 .and().body(map)
-                .when()
-                .post("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus")
-                .then()
+        .when()
+                .post(apiUrl+"/dev/skus")
+        .then()
                 .extract().response();
     }
 
@@ -115,9 +110,9 @@ public class APIVerification {
         response = given().accept(ContentType.JSON)
                 .and()
                 .pathParam("id", inputId)
-                .when()
-                .get("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus/{id}")
-                .then()
+        .when()
+                .get(apiUrl+"/dev/skus/{id}")
+        .then()
                 .extract().response();
     }
 
@@ -130,9 +125,9 @@ public class APIVerification {
 
         response = given().accept(ContentType.JSON)
                 .and().body(skus)
-                .when()
-                .get("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus")
-                .then()
+        .when()
+                .get(apiUrl+"/dev/skus")
+        .then()
                 .extract().response();
     }
 
@@ -140,17 +135,10 @@ public class APIVerification {
     public void i_send_POST_request_with_no_body() {
 
         response = given().accept(ContentType.JSON)
-                .when()
-                .post("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus")
-                .then()
+        .when()
+                .post(apiUrl+"/dev/skus")
+        .then()
                 .extract().response();
     }
 
-
-
 }
-
-
-
-
-

@@ -2,7 +2,7 @@ Feature: API verification
 
   Background: Assuming user is has to login each time when sending any requests
     Given I logged to SKUs api using "username" and "password" to generate Token
-
+  @wip
   Scenario: Testing GET request
     When I send GET request
     Then Status code should be 200
@@ -24,7 +24,7 @@ Feature: API verification
       Scenario:Negative POST request test
         When I send POST request with invalid body
         Then Status code should be 400
-  @wip
+
     Scenario: Negative testing with GET request
       When I send GET request with invalid path params "435437"
       Then Status code should be 400
@@ -32,7 +32,7 @@ Feature: API verification
       Scenario: Negative testing with GET request
         When I send GET request with POST body
         Then Status code should be 400
-  @wip
+
     Scenario: Negative POST request testing
       When I send POST request with no body
       Then Status code should be 400
