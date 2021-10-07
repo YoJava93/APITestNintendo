@@ -7,10 +7,8 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
                   //cucumber reporting plugin
-        plugin = {"html:target/cucumber-report.html",
-                   //path
-                  "rerun:target/rerun.txt"
-        },
+        plugin = {"json:target/cucumber.json",
+                "html:target/default-html-reports"},
         //location of feature files
         features = "src/test/resources/features",
         //location of step_definition files

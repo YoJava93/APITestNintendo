@@ -1,13 +1,16 @@
 package nintendo.step_definition;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+
+
+
+import org.junit.After;
+import org.junit.Before;
 
 public class Hooks {
 
     @Before
-    public void setupScenario() {
-        System.out.println("Setting up browser with further details...");
+    public static void init() {
+        System.out.println("Setting up browser, or API url..'");
     }
 
     @After

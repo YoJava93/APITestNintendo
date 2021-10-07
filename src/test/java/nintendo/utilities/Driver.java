@@ -4,10 +4,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class Driver {
@@ -50,24 +46,13 @@ public class Driver {
                         driverPool.get().manage().window().maximize();
                         driverPool.get().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                         break;
-                    case "remote-chrome":
-                        try{
-                        String gridAddress = "54.90.203.187";
-                        URL url = new URL("http://" + gridAddress + ":4444/wd/hub");
-                        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-                        desiredCapabilities.setBrowserName("chrome");
-                        driverPool.set(new RemoteWebDriver(url, desiredCapabilities));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
 
                 }
             }
         }
 
         /*
-        Same driver instance will be returned every time we call Driver.getDriver(); method
+        Same driver instance will be returned every time we call Driver.getDriver();
          */
         return driverPool.get();
     }
