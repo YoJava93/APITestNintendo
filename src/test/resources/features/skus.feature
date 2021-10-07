@@ -25,7 +25,7 @@ Feature: API verification
       Scenario:Negative POST request test
         When I send POST request with invalid body
         Then Status code should be 400
-
+  @wip
     Scenario: Negative testing with GET request
       When I send GET request with invalid path params "435437"
       Then Status code should be 400
