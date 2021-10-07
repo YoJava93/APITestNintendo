@@ -1,0 +1,194 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+    {
+      "ResponseMetadata": {
+        "RequestId": "HBDLHI2EOC07SPCSHG067O9E4RVV4KQNSO5AEMVJF66Q9ASUAAJG",
+        "HTTPStatusCode": 200,
+        "HTTPHeaders": {
+          "server": "Server",
+          "date": "Thu, 07 Oct 2021 04:28:20 GMT",
+          "content-type": "application/x-amz-json-1.0",
+          "content-length": "2",
+          "connection": "keep-alive",
+          "x-amzn-requestid": "HBDLHI2EOC07SPCSHG067O9E4RVV4KQNSO5AEMVJF66Q9ASUAAJG",
+          "x-amz-crc32": "2745614147"
+        },
+        "RetryAttempts": 0
+      }
+    }
+  ],
+  "required": [
+    "ResponseMetadata"
+  ],
+  "properties": {
+    "ResponseMetadata": {
+      "$id": "#/properties/ResponseMetadata",
+      "type": "object",
+      "title": "The ResponseMetadata schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "RequestId": "HBDLHI2EOC07SPCSHG067O9E4RVV4KQNSO5AEMVJF66Q9ASUAAJG",
+          "HTTPStatusCode": 200,
+          "HTTPHeaders": {
+            "server": "Server",
+            "date": "Thu, 07 Oct 2021 04:28:20 GMT",
+            "content-type": "application/x-amz-json-1.0",
+            "content-length": "2",
+            "connection": "keep-alive",
+            "x-amzn-requestid": "HBDLHI2EOC07SPCSHG067O9E4RVV4KQNSO5AEMVJF66Q9ASUAAJG",
+            "x-amz-crc32": "2745614147"
+          },
+          "RetryAttempts": 0
+        }
+      ],
+      "required": [
+        "RequestId",
+        "HTTPStatusCode",
+        "HTTPHeaders",
+        "RetryAttempts"
+      ],
+      "properties": {
+        "RequestId": {
+          "$id": "#/properties/ResponseMetadata/properties/RequestId",
+          "type": "string",
+          "title": "The RequestId schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "HBDLHI2EOC07SPCSHG067O9E4RVV4KQNSO5AEMVJF66Q9ASUAAJG"
+          ]
+        },
+        "HTTPStatusCode": {
+          "$id": "#/properties/ResponseMetadata/properties/HTTPStatusCode",
+          "type": "integer",
+          "title": "The HTTPStatusCode schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            200
+          ]
+        },
+        "HTTPHeaders": {
+          "$id": "#/properties/ResponseMetadata/properties/HTTPHeaders",
+          "type": "object",
+          "title": "The HTTPHeaders schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "examples": [
+            {
+              "server": "Server",
+              "date": "Thu, 07 Oct 2021 04:28:20 GMT",
+              "content-type": "application/x-amz-json-1.0",
+              "content-length": "2",
+              "connection": "keep-alive",
+              "x-amzn-requestid": "HBDLHI2EOC07SPCSHG067O9E4RVV4KQNSO5AEMVJF66Q9ASUAAJG",
+              "x-amz-crc32": "2745614147"
+            }
+          ],
+          "required": [
+            "server",
+            "date",
+            "content-type",
+            "content-length",
+            "connection",
+            "x-amzn-requestid",
+            "x-amz-crc32"
+          ],
+          "properties": {
+            "server": {
+              "$id": "#/properties/ResponseMetadata/properties/HTTPHeaders/properties/server",
+              "type": "string",
+              "title": "The server schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "Server"
+              ]
+            },
+            "date": {
+              "$id": "#/properties/ResponseMetadata/properties/HTTPHeaders/properties/date",
+              "type": "string",
+              "title": "The date schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "Thu, 07 Oct 2021 04:28:20 GMT"
+              ]
+            },
+            "content-type": {
+              "$id": "#/properties/ResponseMetadata/properties/HTTPHeaders/properties/content-type",
+              "type": "string",
+              "title": "The content-type schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "application/x-amz-json-1.0"
+              ]
+            },
+            "content-length": {
+              "$id": "#/properties/ResponseMetadata/properties/HTTPHeaders/properties/content-length",
+              "type": "string",
+              "title": "The content-length schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "2"
+              ]
+            },
+            "connection": {
+              "$id": "#/properties/ResponseMetadata/properties/HTTPHeaders/properties/connection",
+              "type": "string",
+              "title": "The connection schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "keep-alive"
+              ]
+            },
+            "x-amzn-requestid": {
+              "$id": "#/properties/ResponseMetadata/properties/HTTPHeaders/properties/x-amzn-requestid",
+              "type": "string",
+              "title": "The x-amzn-requestid schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "HBDLHI2EOC07SPCSHG067O9E4RVV4KQNSO5AEMVJF66Q9ASUAAJG"
+              ]
+            },
+            "x-amz-crc32": {
+              "$id": "#/properties/ResponseMetadata/properties/HTTPHeaders/properties/x-amz-crc32",
+              "type": "string",
+              "title": "The x-amz-crc32 schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "2745614147"
+              ]
+            }
+          },
+          "additionalProperties": true
+        },
+        "RetryAttempts": {
+          "$id": "#/properties/ResponseMetadata/properties/RetryAttempts",
+          "type": "integer",
+          "title": "The RetryAttempts schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            0
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
