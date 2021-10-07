@@ -4,7 +4,6 @@ import io.cucumber.java.en.*;
 import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
-import io.restassured.response.ResponseBodyExtractionOptions;
 import nintendo.pojo.SKUs;
 import org.junit.Assert;
 import static io.restassured.RestAssured.*;
@@ -13,7 +12,7 @@ public class APIVerification {
 
     Response response;
 
-    @Given("I logged to SKUS api using {string} and {string} to generate Token")
+    @Given("I logged to SKUs api using {string} and {string} to generate Token")
     public void i_logged_to_SKUS_api_using_and(String username, String password) {
         // i do not have Authorization params, but i wrote it just to simulate real work env
     }
@@ -49,7 +48,7 @@ public class APIVerification {
 
          response = given().accept(ContentType.JSON)
                 .and()
-                .pathParam("id", 20)
+                .pathParam("id", id)
                 .when()
                 .get("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus/{id}")
                 .then()
@@ -57,5 +56,32 @@ public class APIVerification {
                 .extract().response();
     }
 
+    @When("I  send DELETE request  with id {string}")
+    public void i_send_path_params_with_id(String inputId) {
 
+        Integer id = Integer.valueOf(inputId);
+
+         response = given().accept(ContentType.JSON)
+                .and()
+                .pathParam("id", id)
+                .when()
+                .delete("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus/{id}")
+                .then().extract().response();
+
+    }
+
+    @Then("I send GET request to {string}")
+    public void i_send_GET_request_to(String inputId) {
+
+        Integer id = Integer.valueOf(inputId);
+
+        response = given().accept(ContentType.JSON)
+                .and()
+                .pathParam("id", id)
+                .when()
+                .get("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus/{id}")
+                .then()
+                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("features/SKUSchema.json"))
+                .extract().response();
+    }
 }
