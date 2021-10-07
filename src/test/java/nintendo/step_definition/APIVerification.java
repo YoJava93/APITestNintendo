@@ -15,6 +15,7 @@ import static io.restassured.RestAssured.*;
 public class APIVerification {
 
     Response response;
+    SKUs skus = new SKUs();
 
     @Given("I logged to SKUs api using {string} and {string} to generate Token")
     public void i_logged_to_SKUS_api_using_and(String username, String password) {
@@ -23,7 +24,7 @@ public class APIVerification {
 
     @When("I send a POST request using pojo class")
     public void i_send_a_post_request_usin_pojo_class() {
-        SKUs skus = new SKUs();
+
         skus.setSku("sleeping_bag");
         skus.setDescription("Outdoor");
         skus.setPrice("49.99");
@@ -120,8 +121,36 @@ public class APIVerification {
                 .extract().response();
     }
 
+    @When("I send GET request with POST body")
+    public void i_send_GET_request_with_POST_body() {
 
+        skus.setSku("sleeping_bag");
+        skus.setDescription("Outdoor");
+        skus.setPrice("49.99");
+
+        response = given().accept(ContentType.JSON)
+                .and().body(skus)
+                .when()
+                .get("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus")
+                .then()
+                .extract().response();
+    }
+
+    @When("I send POST request with no body")
+    public void i_send_POST_request_with_no_body() {
+
+        response = given().accept(ContentType.JSON)
+                .when()
+                .post("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus")
+                .then()
+                .extract().response();
+    }
 
 
 
 }
+
+
+
+
+

@@ -15,6 +15,7 @@ Feature: API verification
       When I sent a GET request with id "20" and i check response against JSon Schema Validation to verify if response body if it matches with requirements
       And  Status code should be 200
 
+
     Scenario: Testing delete request
       When I  send DELETE request  with id "20"
       Then Status code should be 200
@@ -27,6 +28,14 @@ Feature: API verification
 
     Scenario: Negative testing with GET request
       When I send GET request with invalid path params "435437"
+      Then Status code should be 400
+
+      Scenario: Negative testing with GET request
+        When I send GET request with POST body
+        Then Status code should be 400
+  @wip
+    Scenario: Negative POST request testing
+      When I send POST request with no body
       Then Status code should be 400
 
 
