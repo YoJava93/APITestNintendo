@@ -81,7 +81,19 @@ public class APIVerification {
                 .when()
                 .get("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus/{id}")
                 .then()
-                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("features/SKUSchema.json"))
                 .extract().response();
     }
+
+
+    @When("I send GET request")
+    public void i_send_GET_request() {
+        response = given().accept(ContentType.JSON)
+                .and()
+                .when()
+                .get("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus")
+                .then()
+                .extract().response();
+    }
+
+
 }
