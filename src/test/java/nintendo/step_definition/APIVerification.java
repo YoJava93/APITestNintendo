@@ -48,11 +48,9 @@ public class APIVerification {
     @When("I sent a GET request with id {string} and i check response against JSon Schema Validation to verify if response body if it matches with requirements")
     public void i_sent_a_get_request_with_id(String inputId) {
 
-        Integer id = Integer.valueOf(inputId);
-
          response = given().accept(ContentType.JSON)
                 .and()
-                .pathParam("id", id)
+                .pathParam("id", inputId)
          .when()
                 .get("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus/{id}")
          .then()
@@ -63,11 +61,9 @@ public class APIVerification {
     @When("I  send DELETE request  with id {string}")
     public void i_send_path_params_with_id(String inputId) {
 
-        Integer id = Integer.valueOf(inputId);
-
          response = given().accept(ContentType.JSON)
                 .and()
-                .pathParam("id", id)
+                .pathParam("id", inputId)
          .when()
                 .delete("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus/{id}")
          .then().extract().response();
@@ -77,11 +73,9 @@ public class APIVerification {
     @Then("I send GET request to id {string}")
     public void i_send_GET_request_to(String inputId) {
 
-        Integer id = Integer.valueOf(inputId);
-
         response = given().accept(ContentType.JSON)
                 .and()
-                .pathParam("id", id)
+                .pathParam("id", inputId)
         .when()
                 .get("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus/{id}")
                 .then()
@@ -113,6 +107,21 @@ public class APIVerification {
                 .then()
                 .extract().response();
     }
+
+    @When("I send GET request with invalid path params {string}")
+    public void i_send_GET_request_with_invalid_path_params(String inputId) {
+
+        response = given().accept(ContentType.JSON)
+                .and()
+                .pathParam("id", inputId)
+                .when()
+                .get("https://1ryu4whyek.execute-api.us-west-2.amazonaws.com/dev/skus/{id}")
+                .then()
+                .extract().response();
+    }
+
+
+
 
 
 }

@@ -20,10 +20,14 @@ Feature: API verification
       Then Status code should be 200
       And I send GET request to id "20"
       And Status code should be 404
-  @wip
+
       Scenario:Negative POST request test
         When I send POST request with invalid body
         Then Status code should be 400
+
+    Scenario: Negative testing with GET request
+      When I send GET request with invalid path params "435437"
+      Then Status code should be 400
 
 
 
